@@ -70,4 +70,18 @@ abstract class AbstractRequest
     {
         return $this->soapClient;
     }
+
+    /**
+     * Sets soap request location based on environment
+     *
+     * @return \FedEx\Request
+     */
+    public function useProductionUrl($useProdUrl = true)
+    {
+        if ($useProdUrl) {
+            $this->getSoapClient()->__setLocation(static::PRODUCTION_URL);
+        }
+
+        return $this;
+    }
 }
